@@ -1,0 +1,90 @@
+*{
+  margin:0;
+  padding:0;
+  -moz-box-sizing: border-box;
+}
+body{
+  background-color:black;
+  color:white;
+}
+.navBar{
+  margin-top:10px;
+  display:flex;
+  flex-direction: row;
+  font-size:20px;
+  justify-content: space-evenly;
+  box-shadow:3px 5px 10px white;
+}
+.navBar a{
+  text-decoration: none;
+  color:white;
+}
+.navBar a:active{
+  text-decoration: underline;
+}
+.page1{
+  display:flex;
+  flex-direction: center;
+  align-items:center;
+  justify-content: center;
+  margin-top:100px;
+  border:1px solid gray;
+  border-radius:3%;
+  width:341px;
+  gap:5px;
+  box-shadow: 0px 2px 10px gray;
+}
+.game-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 3%;
+  width: 140px;
+  box-shadow: 0px 2px 10px gray;
+}
+.game-section img{
+  width:110px;
+  border-radius:3%;
+  border-bottom:1px solid white;
+}
+.game-section p{
+  font-size:13px;
+}
+.game-section label{
+  color:red;
+}
+.game-section button{
+  margin-top:20px;
+  margin-bottom:10px;
+  padding:5px 5px;
+  border-radius:20px;
+  border:1px solid blue;
+  background-color:#0FC6FF;
+}
+.title{
+  text-align:center;
+  margin-top:2px;
+  padding-top:60px;
+  font-size:30px;
+}
+
+.title:after{
+  content:"mods";
+  color:red;
+}
+.status:after{
+  content:"SAFE";
+  display:block;
+  color:green;
+  margin-left:3px;
+  margin-top:5px;
+}
+.status{
+  margin-top:15px;
+}
+.ver {
+  margin:auto;
+}

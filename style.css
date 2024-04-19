@@ -1,44 +1,43 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-body{
-  background-color:black;
-  color:white;
+
+body {
+  background-color: black;
+  color: white;
 }
-.navBar{
-  margin-top:10px;
-  display:flex;
+
+.navBar {
+  margin-top: 10px;
+  display: flex;
   flex-direction: row;
-  font-size:20px;
+  font-size: 20px;
   justify-content: space-evenly;
-  box-shadow:3px 5px 10px white;
+  box-shadow: 3px 5px 10px white;
 }
-.navBar a{
+
+.navBar a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
-.navBar a:active{
+
+.navBar a:active {
   text-decoration: underline;
 }
-.page1{
-  display:flex;
-  flex-direction: center;
-  align-items:center;
-  justify-content: center;
-  margin-top:100px;
-  border:1px solid gray;
-  border-radius:3%;
-  width:341px;
-  gap:5px;
-  box-shadow: 0px 2px 10px gray;
+
+.page1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
 .game-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height:380px;
   margin: 10px;
   padding: 10px;
   border: 1px solid gray;
@@ -46,50 +45,100 @@ body{
   width: 140px;
   box-shadow: 0px 2px 10px gray;
 }
-.game-section img{
-  width:110px;
-  border-radius:3%;
-  border-bottom:1px solid white;
-}
-.game-section p{
-  font-size:13px;
-}
-.game-section label{
-  color:red;
-}
-.game-section button{
-  margin-top:20px;
-  margin-bottom:10px;
-  padding:5px 5px;
-  border-radius:20px;
-  border:1px solid blue;
-  background-color:#0FC6FF;
-}
-.title{
-  text-align:center;
-  margin-top:2px;
-  padding-top:60px;
-  font-size:30px;
+
+.game-section img {
+  width: 110px;
+  border-radius: 3%;
+  border-bottom: 1px solid white;
 }
 
-.title:after{
-  content:"mods";
-  color:red;
+.game-section p {
+  font-size: 13px;
 }
-.status:after{
-  content:"WORKING";
-  display:block;
-  color:green;
-  margin-left:3px;
-  margin-top:5px;
+
+.game-section label {
+  color: red;
 }
-.status{
-  margin-top:15px;
+
+.game-section button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 5px 5px;
+  border-radius: 20px;
+  border: 1px solid blue;
+  background-color: #0FC6FF;
 }
+
+.title {
+  text-align: center;
+  margin-top: 2px;
+  padding-bottom: 70px;
+  padding-top: 60px;
+  font-size: 30px;
+}
+
+.title:after {
+  content: "mods";
+  color: red;
+}
+
+.status:after {
+  content: "WORKING";
+  display: block;
+  color: green;
+  margin-left: 3px;
+  margin-top: 5px;
+}
+
+.status {
+  margin-top: 15px;
+}
+
 .ver {
-  margin:auto;
+  margin: auto;
 }
-#test:after{
-  content:"NOT TESTED";
+
+#test:after {
+  content: "NOT TESTED";
+  color: red;
+}
+#searchInput{
+  text-align:center;
+  position:absolute;
+  top:23%;
+  left:23%;
+  border: 1px solid gray;
+  padding:5px 5px;
+  border-radius:20px;
+  box-shadow: 0px 2px 20px white;
+}
+#searchInput:focus{
+  outline:none;
+  box-shadow:0px 2px 10px green;
+}
+#out:after{
+  content:'OUTDATED';
   color:red;
+}
+#risky:after{
+  content:'RISKY';
+  color:red;
+}
+#nwork:after{
+  content:'NOT WORKING';
+  color:red;
+}
+
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
 }

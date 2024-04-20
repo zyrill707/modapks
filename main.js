@@ -1,49 +1,19 @@
-let userCount = localStorage.getItem('userCount') ? parseInt(localStorage.getItem('userCount')) : 2000;
-let increment = 10;
-let formattedCount = formatNumber(userCount);
-
-function trackPageView() {
-  gtag('config', 'G-9VH7RW3Y1X');
-}
-
 window.addEventListener('load', function() {
-  trackPageView();
-  updateUserCountWithAnimation(0, userCount);
-  setInterval(increaseUserCount, 3600000);
+  updateUserCountWithAnimation(2000);
 });
 
-function increaseUserCount() {
-  userCount += increment;
-  localStorage.setItem('userCount', userCount);
-  formattedCount = formatNumber(userCount);
-  updateUserCountWithAnimation(userCount - increment, userCount);
-}
-
-function updateUserCountWithAnimation(startCount, endCount) {
+function updateUserCountWithAnimation(startCount) {
   const userCountElement = document.getElementById('userCount');
   let count = startCount;
   const fps = 60;
-  const duration = 2000;
-  const incrementValue = (endCount - startCount) / (duration / (1000 / fps));
+  const duration = 3600000; // 1 hour in milliseconds
+  const incrementValue = 10;
 
   const interval = setInterval(() => {
     count += incrementValue;
-    if (count >= endCount) {
-      clearInterval(interval);
-      count = endCount;
-    }
-    userCountElement.textContent = Math.round(count);
-  }, 1000 / fps);
-}
-
-function formatNumber(number) {
-  const symbols = ['', 'K', 'M', 'B', 'T'];
-  let tier = Math.log10(number) / 3 | 0;
-  if (tier == 0) return number;
-  const suffix = symbols[tier];
-  const scale = Math.pow(10, tier * 3);
-  const scaled = number / scale;
-  return scaled.toFixed(1) + suffix;
+    userCountElement.textContent = count.toLocaleString(); // Format the count
+    console.log('Animating user count:', count.toLocaleString());
+  }, duration / (duration / (1000 / fps)));
 }
 
 window.addEventListener('scroll', function() {

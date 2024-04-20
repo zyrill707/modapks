@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
       updateCount();
     } else {
       userCountElement.textContent = formatNumber(count);
+      animateCountChange(userCountElement, 0, count);
     }
   }
 });
@@ -30,7 +31,7 @@ function updateCount() {
   }
 
   count += 10;
-  userCountElement.textContent = formatNumber(count);
+  animateCountChange(userCountElement, parseInt(userCountElement.textContent), count);
   localStorage.setItem('userCount', count);
   localStorage.setItem('lastUpdateTime', Date.now());
 }
@@ -38,6 +39,22 @@ function updateCount() {
 function formatNumber(number) {
   const formatter = new Intl.NumberFormat();
   return formatter.format(number);
+}
+
+function animateCountChange(element, currentCount, newCount) {
+  const diff = newCount - currentCount;
+  const duration = 1000;
+  const fps = 60;
+  const increment = diff / (duration / (1000 / fps));
+  let count = currentCount;
+  const interval = setInterval(() => {
+    count += increment;
+    if ((increment > 0 && count >= newCount) || (increment < 0 && count <= newCount)) {
+      clearInterval(interval);
+      count = newCount;
+    }
+    element.textContent = Math.round(count);
+  }, 1000 / fps);
 }
 
 window.addEventListener('scroll', function() {

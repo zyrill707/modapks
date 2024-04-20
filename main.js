@@ -6,14 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
     count = 2000;
   }
 
-  setInterval(() => {
+  function updateCount() {
     count += 10;
-    userCountElement.textContent = count.toLocaleString();
+    userCountElement.textContent = formatNumber(count);
     localStorage.setItem('userCount', count);
-  }, 3600000);
+  }
 
-  userCountElement.textContent = count.toLocaleString();
+  updateCount();
+  setInterval(updateCount, 3600000);
 });
+
+function formatNumber(number) {
+  const formatter = new Intl.NumberFormat();
+  return formatter.format(number);
+}
 
 window.addEventListener('scroll', function() {
   var scrollToTopBtn = document.getElementById('scrollToTopBtn');

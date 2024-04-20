@@ -1,6 +1,6 @@
 function trackPageView() {
-  // Replace '437366929' with your actual GA4 property ID
-  gtag('config', '437366929');
+  // Replace 'G-9VH7RW3Y1X' with your actual Measurement ID
+  gtag('config', 'G-9VH7RW3Y1X');
 }
 
 window.addEventListener('load', function() {

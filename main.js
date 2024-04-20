@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
 });
 
 function fetchUserCount() {
-  const totalUserCount = 1000; // Placeholder for actual user count
+  const totalUserCount = 9000; // Placeholder for actual user count
   updateUserCount(totalUserCount);
 }
 

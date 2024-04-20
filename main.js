@@ -1,20 +1,18 @@
 window.addEventListener('load', function() {
-  updateUserCountWithAnimation(2000);
-});
-
-function updateUserCountWithAnimation(startCount) {
   const userCountElement = document.getElementById('userCount');
-  let count = startCount;
-  const fps = 60;
-  const duration = 3600000; // 1 hour in milliseconds
-  const incrementValue = 10;
+  let count = parseInt(userCountElement.textContent);
 
-  const interval = setInterval(() => {
-    count += incrementValue;
-    userCountElement.textContent = count.toLocaleString(); // Format the count
-    console.log('Animating user count:', count.toLocaleString());
-  }, duration / (duration / (1000 / fps)));
-}
+  if (isNaN(count)) {
+    count = 2000;
+  }
+
+  setInterval(() => {
+    count += 10;
+    userCountElement.textContent = count.toLocaleString();
+  }, 3600000);
+
+  userCountElement.textContent = count.toLocaleString();
+});
 
 window.addEventListener('scroll', function() {
   var scrollToTopBtn = document.getElementById('scrollToTopBtn');

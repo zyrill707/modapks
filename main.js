@@ -1,20 +1,20 @@
-let userCount = 2000; // Starting user count
-let increment = 10; // Increment value
+let userCount = localStorage.getItem('userCount') ? parseInt(localStorage.getItem('userCount')) : 2000;
+let increment = 10;
 let formattedCount = formatNumber(userCount);
 
 function trackPageView() {
-  // Replace 'G-9VH7RW3Y1X' with your actual Measurement ID
   gtag('config', 'G-9VH7RW3Y1X');
 }
 
 window.addEventListener('load', function() {
   trackPageView();
-  updateUserCountWithAnimation(0, userCount); // Start the animation from 0 to starting count
-  setInterval(increaseUserCount, 3600000); // Increase user count every hour (3600000 milliseconds)
+  updateUserCountWithAnimation(0, userCount);
+  setInterval(increaseUserCount, 3600000);
 });
 
 function increaseUserCount() {
   userCount += increment;
+  localStorage.setItem('userCount', userCount);
   formattedCount = formatNumber(userCount);
   updateUserCountWithAnimation(userCount - increment, userCount);
 }
@@ -23,7 +23,7 @@ function updateUserCountWithAnimation(startCount, endCount) {
   const userCountElement = document.getElementById('userCount');
   let count = startCount;
   const fps = 60;
-  const duration = 2000; // Animation duration in milliseconds
+  const duration = 2000;
   const incrementValue = (endCount - startCount) / (duration / (1000 / fps));
 
   const interval = setInterval(() => {

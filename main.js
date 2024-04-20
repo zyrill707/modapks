@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const userCountElement = document.getElementById('userCount');
   let count = parseInt(localStorage.getItem('userCount'));
 

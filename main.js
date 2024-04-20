@@ -2,9 +2,15 @@ function trackPageView() {
   gtag('config', 'G-9VH7RW3Y1X');
 }
 
-window.addEventListener('load', trackPageView);
+window.addEventListener('load', function() {
+  trackPageView();
+  fetchUserCount();
+});
 
-function fetchUserCount() {}
+function fetchUserCount() {
+  const totalUserCount = 1000; // Placeholder for actual user count
+  updateUserCount(totalUserCount);
+}
 
 function updateUserCount(newCount) {
   const userCountElement = document.getElementById('userCount');

@@ -6,15 +6,34 @@ document.addEventListener('DOMContentLoaded', function() {
     count = 2000;
   }
 
-  function updateCount() {
-    count += 10;
-    userCountElement.textContent = formatNumber(count);
-    localStorage.setItem('userCount', count);
+  let lastUpdateTime = localStorage.getItem('lastUpdateTime');
+  if (!lastUpdateTime) {
+    updateCount();
+  } else {
+    lastUpdateTime = new Date(parseInt(lastUpdateTime));
+    const currentTime = new Date();
+    const diffInHours = Math.abs(currentTime - lastUpdateTime) / 36e5; // Convert milliseconds to hours
+    if (diffInHours >= 1) {
+      updateCount();
+    } else {
+      userCountElement.textContent = formatNumber(count);
+    }
+  }
+});
+
+function updateCount() {
+  const userCountElement = document.getElementById('userCount');
+  let count = parseInt(localStorage.getItem('userCount'));
+
+  if (isNaN(count)) {
+    count = 2000;
   }
 
-  updateCount();
-  setInterval(updateCount, 3600000);
-});
+  count += 10;
+  userCountElement.textContent = formatNumber(count);
+  localStorage.setItem('userCount', count);
+  localStorage.setItem('lastUpdateTime', Date.now());
+}
 
 function formatNumber(number) {
   const formatter = new Intl.NumberFormat();

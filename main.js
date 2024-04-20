@@ -5,75 +5,23 @@ function trackPageView() {
 
 window.addEventListener('load', function() {
   trackPageView();
-  fetchUserCount();
+  updateUserCountWithAnimation(0, 9000); // Start the animation from 0 to 9000
 });
 
-function fetchUserCount() {
-  const apiKey = 'AIzaSyCe4HANgap82vKAEgsRxePcCGGCVihDyvo'; // Your API key
-  const propertyID = '437366929'; // Replace with your actual GA4 property ID
-  const endDate = new Date().toISOString().split('T')[0]; // Today's date
-  const startDate = new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0]; // 7 days ago
-
-  const apiUrl = `https://analyticsdata.googleapis.com/v1alpha/properties/${propertyID}:runReport?key=${apiKey}`;
-  const requestData = {
-    "entity": {
-      "propertyId": propertyID,
-    },
-    "dateRanges": [
-      {
-        "startDate": startDate,
-        "endDate": endDate,
-      }
-    ],
-    "dimensions": [
-      {
-        "name": "date",
-      }
-    ],
-    "metrics": [
-      {
-        "name": "activeUsers",
-      }
-    ]
-  };
-
-  fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestData),
-  })
-  .then(response => response.json())
-  .then(data => {
-    const totalUserCount = data.rows[0].metrics[0].values[0];
-    updateUserCount(totalUserCount);
-  })
-  .catch(error => {
-    console.error('Error fetching user count:', error);
-  });
-}
-
-function updateUserCount(newCount) {
+function updateUserCountWithAnimation(startCount, endCount) {
   const userCountElement = document.getElementById('userCount');
-  const currentCount = parseInt(userCountElement.textContent);
-  animateCountChange(userCountElement, currentCount, newCount);
-  userCountElement.textContent = newCount;
-}
-
-function animateCountChange(element, currentCount, newCount) {
-  const diff = newCount - currentCount;
-  const duration = 1000;
+  let count = startCount;
   const fps = 60;
-  const increment = diff / (duration / (1000 / fps));
-  let count = currentCount;
+  const duration = 2000; // Animation duration in milliseconds
+  const increment = (endCount - startCount) / (duration / (1000 / fps));
+
   const interval = setInterval(() => {
     count += increment;
-    if ((increment > 0 && count >= newCount) || (increment < 0 && count <= newCount)) {
+    if (count >= endCount) {
       clearInterval(interval);
-      count = newCount;
+      count = endCount;
     }
-    element.textContent = Math.round(count);
+    userCountElement.textContent = Math.round(count);
   }, 1000 / fps);
 }
 

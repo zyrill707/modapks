@@ -38,7 +38,13 @@ function updateCount() {
 
 function formatNumber(number) {
   const formatter = new Intl.NumberFormat();
-  return formatter.format(number);
+  if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + ' million';
+  } else if (number >= 1000) {
+    return formatter.format(number);
+  } else {
+    return number;
+  }
 }
 
 function animateCountChange(element, currentCount, newCount) {
@@ -53,7 +59,7 @@ function animateCountChange(element, currentCount, newCount) {
       clearInterval(interval);
       count = newCount;
     }
-    element.textContent = Math.round(count);
+    element.textContent = formatNumber(Math.round(count));
   }, 1000 / fps);
 }
 

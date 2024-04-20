@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
   const userCountElement = document.getElementById('userCount');
-  let count = parseInt(userCountElement.textContent);
+  let count = parseInt(localStorage.getItem('userCount'));
 
   if (isNaN(count)) {
     count = 2000;
@@ -9,6 +9,7 @@ window.addEventListener('load', function() {
   setInterval(() => {
     count += 10;
     userCountElement.textContent = count.toLocaleString();
+    localStorage.setItem('userCount', count);
   }, 3600000);
 
   userCountElement.textContent = count.toLocaleString();

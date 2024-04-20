@@ -142,3 +142,13 @@ body {
   padding: 10px;
   cursor: pointer;
 }
+.user-count {
+  font-size: 43px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+}
+.user-count:before {
+  content:"Visits: ";
+}

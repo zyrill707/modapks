@@ -69,7 +69,13 @@ body {
   border: 1px solid blue;
   background-color: #0FC6FF;
 }
-
+.game-section button:active{
+  box-shadow:0px 0px 50px green, 0px 2px 50px green;
+  background-color: #0E134B;
+  text-transform: uppercase;
+  color:white;
+  font-weight: bold;
+}
 .title {
   text-align: center;
   margin-top: 2px;

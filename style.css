@@ -57,7 +57,6 @@ body {
 }
 
 .game-section label {
-  font-size:15px;
   color: red;
 }
 
@@ -136,7 +135,14 @@ body {
   content:'NOT WORKING';
   color:red;
 }
-
+#fixed:after{
+  content:'FIXED';
+  color:green;
+}
+#sell:after{
+  content:'AVAILABLE';
+  color:green;
+}
 #scrollToTopBtn {
   display: none;
   position: fixed;

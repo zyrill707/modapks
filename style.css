@@ -57,6 +57,7 @@ body {
 }
 
 .game-section label {
+  font-size:15px;
   color: red;
 }
 
